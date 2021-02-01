@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Basic Vue Js - HelloWorld App</title>
+      
+        <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+        <!-- Using via Google Web Fonts -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+      
+        <!-- https://tailwindcss.com/docs/installation -->
+        <!-- Using Tailwind via CDN -->
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+      
+        <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+        <!-- Vue CDN -->
+        <script src="https://unpkg.com/vue@next"></script>
+        <style>
+            .greenbutton:hover{
+                background-color: #65ff8f !important;
+            }
+            .yellowbutton:hover{
+                background-color: rgb(42 52 40) !important;
+            }
+            .bordergreen:hover{
+                border-color: #03ef62;
+                background-color: rgb(42 59 76) !important;
+            }
+        </style>
+    </head>
+<!-- <body style="font-family: Studio-Feixen-Sans, Arial;"> -->
+<body style="background-color:rgb(5 25 45);">
+    <nav class="flex flex-wrap items-center p-4 mx-36">      
+        <!-- logo -->
+        <div class="flex flex-wrap">
+            <button>
+                <svg viewBox="0 0 26 34" height="34" width="25" class="inline m-auto pb-1"><path d="M14.001 25.028v-7.224l11.393-6.498-2.77-1.588-8.623 4.918V7.391c0-.491-.265-.95-.69-1.194L2.938.245a1.974 1.974 0 00-2.006.06A1.98 1.98 0 000 1.992v20.375c0 .69.35 1.321.934 1.687a1.973 1.973 0 002.002.061l8.317-4.743v6.457c0 .494.266.952.695 1.196l10.658 6.067 2.771-1.589-11.376-6.475zm-2.748-16.84v8.016l-8.504 4.85V3.31l8.504 4.88z" fill="#03EF62" fill-rule="evenodd"></path></svg>
+                <svg width="135" height="29" class="inline m-auto ml-2"><path d="M31.47 6.657v2.088a8.016 8.016 0 100 11.686v1.765h2.532V6.657h-2.531zm-5.483 13.41a5.478 5.478 0 110-10.956 5.478 5.478 0 010 10.955zm32.175-13.41v2.088a8.016 8.016 0 100 11.686v1.765h2.531V6.657h-2.53zm-5.485 13.41a5.478 5.478 0 11.001-10.956 5.478 5.478 0 010 10.955zM40.407 9.083l.001 9.559c0 .566.46 1.026 1.027 1.026h2.947v2.529h-2.947a3.56 3.56 0 01-3.555-3.555l-.007-9.559H35.14V6.63h2.732V2.37h2.534v4.26H44.9v2.454h-4.494zm85.812-2.499c-2.114 0-4.035.82-5.467 2.156V6.657h-2.532v21.885h2.532v-8.081a8.016 8.016 0 105.467-13.876zm0 13.494a5.477 5.477 0 01-5.467-5.15v-.656a5.477 5.477 0 115.467 5.806zm-49.578-.77a8.016 8.016 0 11.202-9.14l-2.428 1.262a5.322 5.322 0 10-.364 6.617l2.59 1.262zm36.472-12.063c.226-.372.63-.598 1.066-.598h.487c1.034 0 1.873.838 1.873 1.872v13.676h-2.582V10.61a4386.84 4386.84 0 00-6.737 10.989c-.227.371-.63.597-1.065.597h-.529c-.69 0-1.248-.559-1.248-1.248V10.58a1904.214 1904.214 0 00-7.031 11.499l-.07.116h-2.478V6.648h2.584v.031l-.06 10.722 6.192-10.155a1.25 1.25 0 011.067-.598h.49c1.033 0 1.871.835 1.873 1.868.005 2.857.015 8.063.015 8.82l6.153-10.09zm-20.186 7.342v-7.93h-2.531v2.087a8.016 8.016 0 100 11.686v1.765h2.531V14.59zm-8.016 5.478a5.478 5.478 0 110-10.955 5.478 5.478 0 010 10.955zM14.424.23v8.515a8.016 8.016 0 100 11.686v1.765h2.531V.23h-2.531zM8.94 20.066a5.477 5.477 0 110-10.955 5.477 5.477 0 010 10.955z" fill="#FFF" fill-rule="evenodd"></path></svg>
+            </button>
+        </div>
+        
+        <!-- links -->
+        <div class="toggle hidden md:flex w-full md:w-auto text-right text-bold mt-5 md:mt-0 border-t-2 border-blue-900 md:border-none ml-16">        
+            <button class="block hover:bg-gray-800 px-3 py-3 border-blue-900 rounded  mx-2">
+                <span class="text-white font-medium">Learn</span>
+                <svg class=" inline ml-1 mt-1" height="18" role="img" width="18"><path fill="white" d="M8.244 12.155l-4.95-4.947a1 1 0 111.415-1.415l4.294 4.291 4.293-4.279a.998.998 0 011.413.003c.39.392.388 1.025-.003 1.415l-5.002 4.986a.998.998 0 01-1.46-.054z"></path></svg>
+            </button>
+            <button class="block md:inline-block text-white font-medium hover:bg-gray-800 px-3 py-3 border-b-2 border-blue-900 md:border-none rounded  mx-2">
+                <span class="text-white font-medium">Features</span>
+                <svg viewBox="0 0 18 18"class="inline" height="18" role="img" width="18"><path fill="currentColor" d="M8.244 12.155l-4.95-4.947a1 1 0 111.415-1.415l4.294 4.291 4.293-4.279a.998.998 0 011.413.003c.39.392.388 1.025-.003 1.415l-5.002 4.986a.998.998 0 01-1.46-.054z" fill-rule="evenodd"></path>
+                </svg>
+            </button>
+            <button class="block md:inline-block text-white font-medium hover:bg-gray-800 px-3 py-3 border-b-2 border-blue-900 md:border-none rounded  mx-2">Pricing</button>
+            <button class="block md:inline-block text-yellow-400 font-medium hover:bg-gray-800 px-3 py-3 border-b-2 border-blue-900 md:border-none rounded  mx-2">DataCamp For Business</button>
+          </div>
+        <!-- cta -->
+        <div class ="flex m-auto">
+            <button  class="items-center">
+                <svg width="22" height="22" class="text-center m-auto block md:flex md:w-auto md:rounded hover:bg-gray-800 m-auto ml-2 p-1.5 h-9 w-9"><path d="M8.777.138C3.884.652.322 5.054.836 9.948c.514 4.893 4.915 8.455 9.809 7.941a8.874 8.874 0 004.119-1.52l.278-.2 4.6 4.948 1.68-1.22-4.783-5.142a8.9 8.9 0 002.05-6.673C18.073 3.188 13.67-.376 8.776.138zm.215 2.049h.002a6.872 6.872 0 017.546 6.111 6.872 6.872 0 01-6.11 7.544 6.871 6.871 0 01-7.545-6.109 6.872 6.872 0 016.107-7.546z" fill="#fff"></path></svg>
+            </button>       
+            <a href="#" class="bordergreen rounded border-2 md:flex w-full md:w-auto px-4 py-2 hover:border-yellow-400 text-white font-bold md:rounded m-auto ml-2">Sign In</a>
+            <a href="#" class="greenbutton rounded md:flex w-full md:w-auto px-4 py-2 bg-white hover:bg-yellow-400 text-black font-bold md:rounded m-auto ml-2 h-h-9" >Get Started</a>
+        </div>
+    </nav> 
+    <!--header-->
+    <header class="flex flex-wrap items-center py-16">
+        <div class="px-40">
+            <div class="items-center flex">
+                <div class="relative pr-8 mr-36 pb-0 text-left m-0 box-border">
+                    <!-- <h1 class="font-bold text-5xl m-auto tracking-tight leading-4 text-white text-left">Build data skills online</h1> -->
+                    <h1 class="font-bold text-5xl text-white text-left m-auto">Build data skills online</h1>
+                    <p class="text-2xl text-white font-medium text-left mt-4 mb-6 mx-0 max-w-md">Data drives everything. Get the skills you need for the future of work.</p>
+                    <div class="">
+                        <button href="" class="greenbutton items-center rounded px-16 py-4 " style="background-color:#03ef62; width: 365px;">
+                            <span class="text-black font-bold text-xl">Start Learning For Free</span>
+                        </button>
+                    </div>
+                    <div class=" mt-4">
+                        <button href="" class="yellowbutton items-center border-solid rounded border-2 px-16 py-4 hover:bg-yellow-300" style="border-color: #fcce0d; width: 365px;">
+                            <span class="text-white font-bold text-xl">DataCamp For Business</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="p-4 bg-white rounded box-border">
+                    <h2 class="font-bold text-center text-xl">Create Your Free Account</h1>
+                    <div class="mt-4 flex flex-wrap box-border">
+                        <button class="hover:border-red-400 hover:bg-red-200 items-center border-solid rounded border-2 px-4 py-2 w-36">
+                            <svg class="inline m-0" viewBox="0 0 18 18" aria-hidden="true" height="18" role="img" width="18"><path fill="red" d="M9.18 0a8.65 8.65 0 016.022 2.342l-2.57 2.57a4.89 4.89 0 00-3.452-1.35c-2.348 0-4.342 1.584-5.053 3.717a5.39 5.39 0 000 3.446c.717 2.13 2.708 3.713 5.056 3.713 1.214 0 2.255-.31 3.062-.86l-.004.003a4.174 4.174 0 001.754-2.515l.046-.222H9.18V7.378h8.488c.106.602.156 1.217.156 1.829 0 2.738-.979 5.053-2.682 6.62l.001-.001c-1.418 1.312-3.342 2.097-5.62 2.169L9.18 18a9 9 0 01-8.043-4.957l-.136-.284a9.007 9.007 0 01.136-7.798l.14-.266A8.998 8.998 0 019.18.001z"></path></svg>
+                            <span class="font-bold ml-1">Google</span>
+                        </button>
+                        <button class="hover:border-indigo-500 hover:bg-indigo-300 items-center border-solid rounded border-2 px-4 py-2 ml-4 w-36">
+                            <svg class="inline m-0 mb-1" viewBox="0 0 18 18" aria-hidden="true" height="18" role="img" width="18"><path fill="blue" d="M4 2c0 1.1-.7 2-2 2-1.2 0-2-.9-2-1.9C0 1 .8 0 2 0s2 .9 2 2zM0 18h4V5H0v13zM13.6 5.2c-2.1 0-3.3 1.2-3.8 2h-.1l-.2-1.7H5.9c0 1.1.1 2.4.1 3.9V18h4v-7.1c0-.4 0-.7.1-1 .3-.7.8-1.6 1.9-1.6 1.4 0 2 1.2 2 2.8V18h4v-7.4c0-3.7-1.9-5.4-4.4-5.4z" fill-rule="evenodd"></path></svg>
+                            <span class="font-bold ml-1">LinkedIn</span>
+                        </button>
+                        <button class="hover:border-blue-400 hover:bg-blue-300 items-center border-solid rounded border-2 px-4 py-2 ml-4 w-36">
+                            <svg class="inline m-0 " viewBox="0 0 18 18" aria-hidden="true" height="18" role="img" width="18"><path fill="blue" d="M10.33 18V9.79h2.873l.43-3.2H10.33V4.545c0-.926.267-1.557 1.655-1.557h1.766V.124A24.974 24.974 0 0011.175 0C8.627 0 6.882 1.491 6.882 4.23v2.36H4v3.2h2.882V18h3.448z"></path></svg>
+                            <span class="font-bold ml-1">Facebook</span>
+                        </button>
+                    </div>
+                    
+                    <form class="my-4">
+                        <p class="font-bold leading-8 text-lg my-2">Email address</p>
+                        <input class="rounded border-2 border-gray-300 px-4 h-12 w-full" placeholder="Email address">
+                        <p class="font-bold leading-8 text-lg my-2">Password</p>
+                        <input class="rounded border-2 border-gray-300 px-4 h-12 w-full" placeholder="Password">
+                    </form>
+                    <div>
+                        <button href="" class="greenbutton w-full bg-green-400 items-center rounded px-16 py-4 my-auto" style="background-color:#03ef62;">
+                            <span class="text-black font-bold text-xl ">Start Learning For Free</span>
+                        </button>
+                    </div>
+                    <small class="mt-4 text-gray-500 flex flex-wrap max-w-md">By continuing you accept the Terms of Use and Privacy Policy. You also accept that you are aware that your data will be stored outside of the EU and that you are above the age of 16.</small>
+                </div>
+            </div>
+        </div>
+    </header>
+    <script src="script.js"></script>
+</body>
+</html>
